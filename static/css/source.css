@@ -44,12 +44,16 @@ input{
     border-radius: 4px;
 }
 
+#source{
+    width: 400px;
+}
+
 #tag-info{
     font-style: italic;
 }
 
 
-#yellow{
+#yellow, #warning{
     color: #fed136;
 }
 
@@ -133,7 +137,7 @@ input{
 }
 
 header{
-    background-image:url(../img/header-bg.jpg);
+    background-image:url(/static/img/search-background.png);
     background-repeat:none;
     background-attachment:scroll;
     background-position:center center;
@@ -226,3 +230,4 @@ img::-moz-selection{
 body{
     webkit-tap-highlight-color:#fed136;
 }
+

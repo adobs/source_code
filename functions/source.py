@@ -1,7 +1,6 @@
 # todo
 # add testing
 # deploy
-# add a what if invalid address
 
 # Beautiful Soup is a Python library for pulling data out of HTML and XML files
 from bs4 import BeautifulSoup
@@ -10,6 +9,7 @@ import urllib2
 # simple  HTML and XTHML parser
 from HTMLParser import HTMLParser
 import collections
+import re
 
 
 class MyHTMLParser(HTMLParser):
@@ -37,16 +37,20 @@ def convert_url_text(url):
     # urllib2 opens a URL and reads the HTML from the URL
     response = urllib2.urlopen(url)
     
+    html = response.read()
+        
+    return html
+
+
+def is_valid_url(url):
+    """ Checks to see if the URL inputted is valid.  Returns boolean """
+
     try:
-        html = response.read()
-        
-        return html
+        urllib2.urlopen(url)
+        return "True"
 
-    except: 
-        
-        return "Inavlid URL"
-        
-
+    except:
+        return "False"
 
 
 def count_tags(url):
@@ -76,8 +80,7 @@ def escape_html(text):
 
     Adds in a line break after '>' to make reading the text easier """
 
-    edited_text = str(text).replace("<", "&lt;").replace(">", "&gt;")
-    edited_text = edited_text.replace("&gt;&lt;", "&gt;<br>&lt;")
+    edited_text = str(text).replace("<", "&lt;").replace(">", "&gt;<br>")
 
     return edited_text
 
