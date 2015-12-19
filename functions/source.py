@@ -1,14 +1,15 @@
+# todo
+# add testing
+# deploy
+# add a what if invalid address
+
 # Beautiful Soup is a Python library for pulling data out of HTML and XML files
 from bs4 import BeautifulSoup
-
 import urllib2
 
 # simple  HTML and XTHML parser
 from HTMLParser import HTMLParser
-
 import collections
-
-# from htmlentitydefs import name2codepoint
 
 
 class MyHTMLParser(HTMLParser):
@@ -18,26 +19,34 @@ class MyHTMLParser(HTMLParser):
         
         self.reset()  
         self.start = []
-        self.end = []
+        # self.end = []
 
     def handle_starttag(self, tag, attrs):
         """ Add start tag to list on object """
 
         self.start.append(tag)
 
-    def handle_endtag(self, tag):
-        """ Add end tag to list on object """
-        self.end.append(tag)
+    # def handle_endtag(self, tag):
+    #     """ Add end tag to list on object """
+    #     self.end.append(tag)
 
 
 def convert_url_text(url):
-    """ Convert html of a URL (as a string) to a string """ 
+    """ Convert html of a URL (as a string) to a string """
 
     # urllib2 opens a URL and reads the HTML from the URL
     response = urllib2.urlopen(url)
-    html = response.read()
+    
+    try:
+        html = response.read()
+        
+        return html
 
-    return html
+    except: 
+        
+        return "Inavlid URL"
+        
+
 
 
 def count_tags(url):

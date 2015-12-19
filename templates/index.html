@@ -1,3 +1,10 @@
+<!-- todo -->
+<!-- add favicon -->
+<!-- change image background -->
+<!-- add readme -->
+<!-- make placeholder text show -->
+<!-- make search bar bigger -->
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -39,7 +46,7 @@
                         <div class="intro-lead-in">Enter a URL to see the source code for that website</div>
                             <form id='input-form'>
                                 <input type='text' id='source'>
-                                <a href="#tag"><input type="submit" class="btn btn-md" id='submit-btn' value="Search"></a>                   
+                                <input type="submit" class="btn btn-md" id='submit-btn' value="Search">
                             </form>
                     </div> <!-- close col -->
                 </div> <!-- close row -->
@@ -59,13 +66,15 @@
                 </div> <!-- close col -->
                 <div class='col-md-8'>
                     <h2 class="section-heading" id="source-text-header" hidden>Source Text</h2>
+                    <h3 class="section-heading" id='tag-info'></h3>
                     <div id='source-text-loading' hidden><img src='/static/gif/loading.gif'></div>
                     <div id="source-text"></div> <!-- close source text -->
+                    <br>
+                    <a href="#tag" id='top-btn' hidden><button class="btn btn-md" value="Top">Top</button></a>
                 </div> <!-- close col -->
             </div> <!-- close row -->
         </div> <!-- close container -->
     </section>
-
   
 
     <!-- jQuery -->
@@ -73,6 +82,9 @@
 
     <!-- Bootstrap Core JavaScript -->
     <script src="/static/js/bootstrap.min.js"></script>
+
+    <!-- highlight jQuery -->
+    <script src='/static/js/highlight.js'></script>
 
     <!-- Custom Theme JavaScript -->
     <script src="/static/js/source.js"></script>

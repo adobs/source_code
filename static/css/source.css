@@ -33,17 +33,32 @@ a:hover,a:focus,a:active,a.active{
 }
 
 h1,h2,h3,h4,h5,h6{
-    font-family:Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;text-transform:uppercase;
+    font-family:Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
+    text-transform:uppercase;
     font-weight:700;
 }
 
-/*.img-centered{
-    margin:0 auto
-}*/
 
 input{
     color: black;
     border-radius: 4px;
+}
+
+#tag-info{
+    font-style: italic;
+}
+
+
+#yellow{
+    color: #fed136;
+}
+
+#source-text{
+    word-wrap: break-word;
+}
+
+.highlight {
+    background-color: #fed136;
 }
 
 .bg-light-gray{
@@ -55,8 +70,12 @@ input{
 } 
 
 .btn-primary{
-    color:#fff;background-color:#fed136;border-color:#fed136;font-family:Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
-    text-transform:uppercase;font-weight:700
+    color:#fff;
+    background-color:#fed136;
+    border-color:#fed136;
+    font-family:Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
+    text-transform:uppercase;
+    font-weight:700
 }
 
 .btn-primary:hover,.btn-primary:focus,.btn-primary:active,.btn-primary.active,.open .dropdown-toggle.btn-primary{
