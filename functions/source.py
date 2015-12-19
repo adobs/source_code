@@ -25,31 +25,13 @@ class MyHTMLParser(HTMLParser):
 
         self.start.append(tag)
 
-        # for attr in attrs:
-        #     print "     attr:", attr
     def handle_endtag(self, tag):
         """ Add end tag to list on object """
         self.end.append(tag)
 
 
-    # def handle_data(self, data):
-    #     print "Data     :", data
-    # def handle_comment(self, data):
-    #     print "Comment  :", data
-    # def handle_entityref(self, name):
-    #     c = unichr(name2codepoint[name])
-    #     print "Named ent:", c
-    # def handle_charref(self, name):
-    #     if name.startswith('x'):
-    #         c = unichr(int(name[1:], 16))
-    #     else:
-    #         c = unichr(int(name))
-    #     print "Num ent  :", c
-    # def handle_decl(self, data):
-    #     print "Decl     :", data
-
 def convert_url_text(url):
-    """ Convert html of a URL (as a string) to a string """  # check that it is a string
+    """ Convert html of a URL (as a string) to a string """ 
 
     # urllib2 opens a URL and reads the HTML from the URL
     response = urllib2.urlopen(url)
@@ -80,12 +62,23 @@ def count_tags(url):
     return ordered_counter
 
 
-def source_url(url):
+def escape_html(text):
+    """ For an HTML text, escapes characters that would be read as markup
+
+    Adds in a line break after '>' to make reading the text easier """
+
+    edited_text = str(text).replace("<", "&lt;").replace(">", "&gt;")
+    edited_text = edited_text.replace("&gt;&lt;", "&gt;<br>&lt;")
+
+    return edited_text
+
+
+def source_text(url):
     """ Based on a URL, outputs the source text of the doument """
 
     html = convert_url_text(url)
 
-    # BeatuifulSoup obejct works with parser with given html 
-    soup = BeautifulSoup(html, "html.parser")
+    # BeatuifulSoup obejct works with parser with given html
+    soup = escape_html(BeautifulSoup(html, "html.parser"))
 
     return soup
