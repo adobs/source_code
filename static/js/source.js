@@ -2,8 +2,9 @@ function highlight(evt){
     var tag = $(evt.target).prop("name");
     $("div#source-text").unhighlight();
 
-    // highlight a beginning tag
-    $("div#source-text").highlight("<"+tag);
+    // highlight a beginning tag (two cases)
+    $("div#source-text").highlight("<"+tag +">");
+    $("div#source-text").highlight("<"+tag +" ");   
 
     // highlight an ending tag
     $("div#source-text").highlight("</"+tag+">");
@@ -78,11 +79,11 @@ $(function() {
                 // enable search again    
                 $("#submit-btn").removeAttr("disabled");
 
-                console.log("In the else");
             }
 
             // if the site's URL has not been entered
             else{
+                alert("source is "+ source);
                 executeSearch();
             }
 
