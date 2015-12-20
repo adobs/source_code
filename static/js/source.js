@@ -71,19 +71,19 @@ $(function() {
         // if the URL is valid
         if(data === "True"){
             
-            // if the site's URL has not been entered
-            if(source.indexOf("http://textsource.herokuapp.com") == -1){
-                executeSearch();
-            }
-
             // the user is searching for http://textsource.herokuapp.com
-            else{
+            if(source.indexOf("http://textsource.herokuapp.com") !== -1){
                 $('#myModal').modal('show');
 
                 // enable search again    
                 $("#submit-btn").removeAttr("disabled");
 
                 console.log("In the else");
+            }
+
+            // if the site's URL has not been entered
+            else{
+                executeSearch();
             }
 
         }
