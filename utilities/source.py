@@ -1,7 +1,3 @@
-# todo
-# add testing
-# check for mobile optimization
-
 """
 source.py
 

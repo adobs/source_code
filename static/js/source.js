@@ -1,20 +1,16 @@
-// todo
-// questions
-// why does function highlight need to be outside of the on ready?
+function highlight(evt){
+    var tag = $(evt.target).prop("name");
+    $("div#source-text").unhighlight();
 
-    function highlight(evt){
-        var tag = $(evt.target).prop("name");
-        $("div#source-text").unhighlight();
+    // highlight a beginning tag
+    $("div#source-text").highlight("<"+tag);
 
-        // highlight a beginning tag
-        $("div#source-text").highlight("<"+tag);
+    // highlight an ending tag
+    $("div#source-text").highlight("</"+tag+">");
 
-        // highlight an ending tag
-        $("div#source-text").highlight("</"+tag+">");
-
-        $("#tag-info").empty();
-        $("#tag-info").html("<span id='yellow'>"+tag+"</span> tag is highlighted");
-    }
+    $("#tag-info").empty();
+    $("#tag-info").html("<span id='yellow'>"+tag+"</span> tag is highlighted");
+}
 
 $(function() {
 
