@@ -63,7 +63,8 @@ def count_tags(url):
 def escape_html(text):
     """ For an HTML text, escapes characters that would be read as markup
 
-    Adds in a line break after '>' to make reading the text easier """
+    Adds in a line break after '>' to make reading the text easier 
+    """
 
     edited_text = str(text).replace("<", "&lt;").replace(">", "&gt;<br>")
 
