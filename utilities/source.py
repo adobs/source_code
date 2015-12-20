@@ -1,6 +1,5 @@
 # todo
 # add testing
-# deploy
 # check for mobile optimization
 
 """
@@ -10,7 +9,7 @@ Helper functions.  Based on the URL in the search box, returns information
 (to be JSONified) about tag count and source text 
 """
 
-# Beautiful Soup is a Python library for pulling data out of HTML and XML files
+# Beautiful Soup (bs4) is a Python library for pulling data out of HTML and XML files
 from bs4 import BeautifulSoup
 import urllib2
 import collections
