@@ -1,7 +1,13 @@
+"""
+server.py
+
+File contains all routes for Flask app
+"""
+
 from flask import Flask, request, render_template, flash, jsonify
 from jinja2 import StrictUndefined
 import os
-from functions.source import count_tags, source_text, is_valid_url
+from utilities.source import count_tags, source_text, is_valid_url
 
 app = Flask(__name__)
 

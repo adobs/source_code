@@ -1,34 +1,20 @@
 # todo
 # add testing
 # deploy
+# check for mobile optimization
+
+"""
+source.py
+
+Helper functions.  Based on the URL in the search box, returns information 
+(to be JSONified) about tag count and source text 
+"""
 
 # Beautiful Soup is a Python library for pulling data out of HTML and XML files
 from bs4 import BeautifulSoup
 import urllib2
-
-# simple  HTML and XTHML parser
-from HTMLParser import HTMLParser
 import collections
-import re
-
-
-class MyHTMLParser(HTMLParser):
-    
-    def __init__(self):
-        """ Initialize and reset this instance """
-        
-        self.reset()  
-        self.start = []
-        # self.end = []
-
-    def handle_starttag(self, tag, attrs):
-        """ Add start tag to list on object """
-
-        self.start.append(tag)
-
-    # def handle_endtag(self, tag):
-    #     """ Add end tag to list on object """
-    #     self.end.append(tag)
+from classes import MyHTMLParser
 
 
 def convert_url_text(url):
@@ -43,7 +29,7 @@ def convert_url_text(url):
 
 
 def is_valid_url(url):
-    """ Checks to see if the URL inputted is valid.  Returns boolean """
+    """ Checks to see if the URL inputted is valid.  Returns boolean string """
 
     try:
         urllib2.urlopen(url)
