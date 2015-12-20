@@ -66,7 +66,7 @@ $(function() {
     function checkAnswer(data){
 
         // URL
-        var source = $("#source").val();  
+        var source = $("#source").val();
 
         // if the URL is valid
         if(data === "True"){
@@ -78,7 +78,7 @@ $(function() {
 
             // the user is searching for http://textsource.herokuapp.com
             else{
-                // $('#myModal').modal('show');
+                $('#myModal').modal('show');
 
                 // enable search again    
                 $("#submit-btn").removeAttr("disabled");
