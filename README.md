@@ -1,4 +1,4 @@
-# [Text Source](textsource.herokuapp.com/)
+# [Text Source](http://textsource.herokuapp.com/)
 
 # About
 
