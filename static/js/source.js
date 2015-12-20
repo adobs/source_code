@@ -78,7 +78,7 @@ $(function() {
 
             // the user is searching for http://textsource.herokuapp.com
             else{
-                $('#myModal').modal('show');
+                // $('#myModal').modal('show');
 
                 // enable search again    
                 $("#submit-btn").removeAttr("disabled");
