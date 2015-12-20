@@ -13,7 +13,7 @@ function highlight(evt){
     $("#tag-info").html("<span id='yellow'>"+tag+"</span> tag is highlighted");
 }
 
-// $(function() {
+$(function() {
 
 
     function displayTagCount(data){
@@ -133,4 +133,4 @@ function highlight(evt){
     $("#warning").hide();
     
 
-// });
+});
