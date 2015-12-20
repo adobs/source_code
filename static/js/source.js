@@ -65,19 +65,23 @@ $(function() {
 
     function checkAnswer(data){
 
-        var source = $("#source").val();
+        // URL
+        var source = $("#source").val();  
 
         // if the URL is valid
-        if (data== "True"){
+        if(data === "True"){
             
             // if the site's URL has not been entered
-            if (source.indexOf("textsource.herokuapp.com") == -1){
+            if(source.indexOf("http://textsource.herokuapp.com") == -1){
                 executeSearch();
             }
 
             // the user is searching for http://textsource.herokuapp.com
             else{
                 $('#myModal').modal('show');
+
+                // enable search again    
+                $("#submit-btn").removeAttr("disabled");
             }
 
         }
@@ -85,8 +89,9 @@ $(function() {
         // if the URL is not valid
         else{
 
-            //checks to see if there is an http in the address and there isn't
-            if (source.indexOf("http") == -1){
+            // checks to see if there is an http in the address and there isn't
+            // capture both upper and lower case
+            if (source.indexOf("http") == -1 || source.indexOf("HTTP") == -1){
                 $("#warning").show();
                 $("#warning").html("<span class='glyphicon glyphicon-exclamation-sign' aria-hidden='true'></span> This is not a valid URL<br>Try adding 'http://' or 'https://' to the beginning");
             }
@@ -96,7 +101,8 @@ $(function() {
                 $("#warning").show();
                 $("#warning").html("<span class='glyphicon glyphicon-exclamation-sign' aria-hidden='true'></span> This is not a valid URL");
             }
-                
+
+            // enable search again    
             $("#submit-btn").removeAttr("disabled");
 
             // hide div with tag count and source text
