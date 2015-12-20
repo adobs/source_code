@@ -72,7 +72,7 @@ $(function() {
         if(data === "True"){
             
             // the user is searching for http://textsource.herokuapp.com
-            if(source.indexOf("http://textsource.herokuapp.com") !== -1){
+            if(source.indexOf("http://textsource.herokuapp.com") != -1){
                 $('#myModal').modal('show');
 
                 // enable search again    
