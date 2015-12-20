@@ -48,12 +48,14 @@ $(function() {
         // get rid of previous content
         $("#tag-count").empty();
         $("#source-text").empty();
+        $("#tag-info").empty();
+
         
         // loading wheels in each section
         $("#tag-count-loading").show();
         $("#source-text-loading").show();
 
-
+        // show the div tag that has all tag count / source text info
         $("#tag").show();
 
         // scroll 
