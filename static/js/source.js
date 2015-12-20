@@ -4,7 +4,7 @@ function highlight(evt){
 
     // highlight a beginning tag (two cases)
     $("div#source-text").highlight("<"+tag +">");
-    $("div#source-text").highlight("<"+tag +" ");   
+    $("div#source-text").highlight("<"+tag +" ");
 
     // highlight an ending tag
     $("div#source-text").highlight("</"+tag+">");
@@ -71,22 +71,7 @@ function highlight(evt){
 
         // if the URL is valid
         if(data === "True"){
-            
-            // the user is searching for http://textsource.herokuapp.com
-            if(source.indexOf("http://textsource.herokuapp.com") != -1){
-                $('#myModal').modal('show');
-
-                // enable search again    
-                $("#submit-btn").removeAttr("disabled");
-
-            }
-
-            // if the site's URL has not been entered
-            else{
-                alert("source is "+ source);
-                executeSearch();
-            }
-
+            executeSearch();
         }
 
         // if the URL is not valid
@@ -127,7 +112,19 @@ function highlight(evt){
             "source": $("#source").val()
         };
 
-        $.get("/check-url.json", url, checkAnswer);
+        // if the user is searching for http://textsource.herokuapp.com
+        if(url.source.indexOf("http://textsource.herokuapp.com") != -1){
+            $('#myModal').modal('show');
+
+            // enable search again    
+            $("#submit-btn").removeAttr("disabled");
+
+        }
+
+        // otherwise, AJAX to verify URL link
+        else{
+            $.get("/check-url.json", url, checkAnswer);
+        }
     }
 
     // event listener for URL submission
