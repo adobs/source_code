@@ -82,6 +82,8 @@ $(function() {
 
                 // enable search again    
                 $("#submit-btn").removeAttr("disabled");
+
+                console.log("In the else");
             }
 
         }
