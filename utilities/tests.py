@@ -12,6 +12,7 @@ os.sys.path.insert(0, parentdir)
 import server
 from source import convert_url_text, is_valid_url, count_tags, escape_html, source_text
 from selenium import webdriver
+import time
 
 
 class TestCase(unittest.TestCase):
@@ -68,22 +69,27 @@ class TestCase(unittest.TestCase):
     def test_title(self):
         """ Testing title using Selenium """
 
-        self.browser.get('http://localhost:5000/')
+        self.browser.get('http://textsource.herokuapp.com')
         self.assertEqual(self.browser.title, 'Text Source')
 
     def test_search(self):
         """ Testing search box with valid URL using Selenium """
 
-        self.browser.get('http://localhost:5000/')
+        self.browser.get('http://textsource.herokuapp.com')
 
-        source = self.browser.find_element_by_id('source')
-        source.send_keys("https://wwww.google.com")
+        # source = self.browser.find_element_by_id('source')
+        # source.send_keys("https://wwww.google.com")
+        self.browser.execute_script("document.querySelector('#source').value = 'https://www.google.com';")
 
-        btn = self.browser.find_element_by_id('submit-btn')
-        btn.click()
+        # btn = self.browser.find_element_by_id('submit-btn')
+        # btn.click()
+        time.sleep(5)
+        self.browser.find_element_by_id("submit-btn").click()
+
+        time.sleep(5)
 
         tag_count_header = self.browser.find_element_by_id('tag-count-header')
-        self.assertEqual(tag_count_header.text, "Tag Count")
+        self.assertEqual(tag_count_header.text, "TAG COUNT")
 
 
 if __name__ == '__main__':
