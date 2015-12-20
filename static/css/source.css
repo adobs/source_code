@@ -57,6 +57,14 @@ input{
     color: #fed136;
 }
 
+#warning{
+    background-color: black;
+    opacity: 0.6;
+    display: inline-block;
+    border-radius: 4px;
+    padding: 2px 4px;
+}
+
 #source-text{
     word-wrap: break-word;
 }

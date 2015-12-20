@@ -72,9 +72,11 @@ $(function() {
 
             //checks to see if there is an http in the address
             if (source.indexOf("http") == -1){
+                $("#warning").show();
                 $("#warning").html("<span class='glyphicon glyphicon-exclamation-sign' aria-hidden='true'></span> This is not a valid URL<br>Try adding 'http://' or 'https://' to the beginning");
             }
             else{
+                $("#warning").show();
                 $("#warning").html("<span class='glyphicon glyphicon-exclamation-sign' aria-hidden='true'></span> This is not a valid URL");
             }
                 
@@ -92,8 +94,8 @@ $(function() {
         // disable button
         $("#submit-btn").prop("disabled", "true");
 
-        // clear the warning text
-        $("#warning").empty();
+        // hide/clear the warning text
+        $("#warning").hide().empty();
 
         var url = {
             "source": $("#source").val()
@@ -104,6 +106,9 @@ $(function() {
 
     // event listener for URL submission
     $("#input-form").on("submit", checkUrl);
+
+    // hide warning box (even if empty, has opaque borders that show)
+    $("#warning").hide();
     
 
 });
