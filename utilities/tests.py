@@ -2,7 +2,7 @@
 tests.py
 
 Tests file.  Of note, if Google (example used in many test cases) were to change 
-its page, many of the` tests would fail.
+its page, many of the tests would fail.
 """
 
 import unittest
@@ -18,6 +18,8 @@ import time
 class TestCase(unittest.TestCase):
     """ Unit tests """
 
+    #################### SETUP AND TEARDOWN FOR EACH TEST ######################
+    
     def setUp(self):
         """ Setup for all test cases """
         self.client = server.app.test_client()
@@ -25,6 +27,8 @@ class TestCase(unittest.TestCase):
 
     def tearDown(self):
         self.browser.quit()
+
+    ########################### TESTING ROUTES #################################
 
     def test_home(self):
         """ Testing routes """
@@ -66,24 +70,24 @@ class TestCase(unittest.TestCase):
 
         self.assertIsInstance(source_text("https://www.google.com"), basestring)
 
+    ################ TESTING JAVASCRIPT USING SELENIUM #########################
+
     def test_title(self):
-        """ Testing title using Selenium """
+        """ Testing title """
 
         self.browser.get('http://textsource.herokuapp.com')
         self.assertEqual(self.browser.title, 'Text Source')
 
     def test_search(self):
-        """ Testing search box with valid URL using Selenium """
+        """ Testing search box with valid URL """
 
         self.browser.get('http://textsource.herokuapp.com')
 
-        # source = self.browser.find_element_by_id('source')
-        # source.send_keys("https://wwww.google.com")
         self.browser.execute_script("document.querySelector('#source').value = 'https://www.google.com';")
 
-        # btn = self.browser.find_element_by_id('submit-btn')
-        # btn.click()
+        # need to sleep otherwise Selenium works too fast
         time.sleep(5)
+
         self.browser.find_element_by_id("submit-btn").click()
 
         time.sleep(5)

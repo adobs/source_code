@@ -169,6 +169,7 @@ header .intro-text .intro-heading{
     font-size:50px;
     line-height:50px;
     margin-bottom:25px
+    word-wrap: break-word;
 }
 
 @media (min-width:768px){
@@ -218,6 +219,10 @@ section h3.section-subheading{
     }
 }
 
+@media(max-width:767px) {
+    #source{
+        width: 200px;
+    }
 
 img::selection{
     background:0 0
