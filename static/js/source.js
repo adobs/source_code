@@ -59,15 +59,15 @@ function highlight(evt){
         // show the div tag that has all tag count / source text info
         $("#tag").show();
 
-        // scroll 
+        // scroll to desired place on page
         window.location = "#tag";
 
     }
 
     function checkAnswer(data){
 
-        // URL
-        var source = $("#source").val();
+        // URL (converted to all lowercase)
+        var source = $("#source").val().toLowerCase();
 
         // if the URL is valid
         if(data === "True"){
@@ -78,8 +78,7 @@ function highlight(evt){
         else{
 
             // checks to see if there is an http in the address and there isn't
-            // capture both upper and lower case
-            if (source.indexOf("http") == -1 || source.indexOf("HTTP") == -1){
+            if (source.indexOf("http") == -1){
                 $("#warning").show();
                 $("#warning").html("<span class='glyphicon glyphicon-exclamation-sign' aria-hidden='true'></span> This is not a valid URL<br>Try adding 'http://' or 'https://' to the beginning");
             }
@@ -109,7 +108,7 @@ function highlight(evt){
         $("#warning").hide().empty();
 
         var url = {
-            "source": $("#source").val()
+            "source": $("#source").val().toLowerCase()
         };
 
         // if the user is searching for http://textsource.herokuapp.com
