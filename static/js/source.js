@@ -64,19 +64,34 @@ $(function() {
     }
 
     function checkAnswer(data){
+
+        var source = $("#source").val();
+
         // if the URL is valid
         if (data== "True"){
-            executeSearch();
+            
+            // if the site's URL has not been entered
+            if (source.indexOf("textsource.herokuapp.com") == -1){
+                executeSearch();
+            }
+
+            // the user is searching for http://textsource.herokuapp.com
+            else{
+                $('#myModal').modal('show');
+            }
+
         }
 
+        // if the URL is not valid
         else{
-            var source = $("#source").val();
 
-            //checks to see if there is an http in the address
+            //checks to see if there is an http in the address and there isn't
             if (source.indexOf("http") == -1){
                 $("#warning").show();
                 $("#warning").html("<span class='glyphicon glyphicon-exclamation-sign' aria-hidden='true'></span> This is not a valid URL<br>Try adding 'http://' or 'https://' to the beginning");
             }
+
+            // has http in addresss
             else{
                 $("#warning").show();
                 $("#warning").html("<span class='glyphicon glyphicon-exclamation-sign' aria-hidden='true'></span> This is not a valid URL");

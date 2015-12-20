@@ -19,13 +19,16 @@ class TestCase(unittest.TestCase):
     """ Unit tests """
 
     #################### SETUP AND TEARDOWN FOR EACH TEST ######################
-    
+
     def setUp(self):
         """ Setup for all test cases """
+
         self.client = server.app.test_client()
         self.browser = webdriver.Firefox()
 
     def tearDown(self):
+        """ Teardown for all test cases """
+
         self.browser.quit()
 
     ########################### TESTING ROUTES #################################
@@ -70,7 +73,7 @@ class TestCase(unittest.TestCase):
 
         self.assertIsInstance(source_text("https://www.google.com"), basestring)
 
-    ################ TESTING JAVASCRIPT USING SELENIUM #########################
+    ###################### TESTING JAVASCRIPT USING SELENIUM ###################
 
     def test_title(self):
         """ Testing title """
