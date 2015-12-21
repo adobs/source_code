@@ -118,6 +118,9 @@ $(function() {
             // enable search again    
             $("#submit-btn").removeAttr("disabled");
 
+            // hide div with tag count and source text
+            $("#tag").hide();
+
         }
 
         // otherwise, AJAX to verify URL link
