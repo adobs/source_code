@@ -4,7 +4,7 @@ server.py
 File contains all routes for Flask app
 """
 
-from flask import Flask, request, render_template, flash, jsonify
+from flask import Flask, request, render_template, jsonify
 from jinja2 import StrictUndefined
 import os
 from utilities.source import count_tags, source_text, is_valid_url
@@ -47,14 +47,6 @@ def check_url_json():
     url = request.args.get("source")
 
     return is_valid_url(url)
-
-
-@app.route("/test")
-def test():
-    """ test page """
-
-    import socket
-    return socket.gethostbyname(socket.gethostname())
 
 
 if __name__ == "__main__":
