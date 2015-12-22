@@ -1,20 +1,22 @@
-function highlight(evt){
-    var tag = $(evt.target).prop("name");
-    $("div#source-text").unhighlight();
 
-    // highlight a beginning tag (two cases)
-    $("div#source-text").highlight("<"+tag +">");
-    $("div#source-text").highlight("<"+tag +" ");
-
-    // highlight an ending tag
-    $("div#source-text").highlight("</"+tag+">");
-
-    $("#tag-info").empty();
-    $("#tag-info").html("<span id='yellow'>"+tag+"</span> tag is highlighted");
-}
 
 $(function() {
 
+
+    function highlight(evt){
+        var tag = $(evt.target).prop("name");
+        $("div#source-text").unhighlight();
+
+        // highlight a beginning tag (two cases)
+        $("div#source-text").highlight("<"+tag +">");
+        $("div#source-text").highlight("<"+tag +" ");
+
+        // highlight an ending tag
+        $("div#source-text").highlight("</"+tag+">");
+
+        $("#tag-info").empty();
+        $("#tag-info").html("<span id='yellow'>"+tag+"</span> tag is highlighted");
+    }
 
     function displayTagCount(data){
         $("#tag-count-header").show();
@@ -22,9 +24,11 @@ $(function() {
 
         // iterate through the object of tags and counts
         $.each( data, function( key, value ) {
-          $("#tag-count").append( "<a class='source-text-link' onclick='highlight(event)' name="+key+">"+key +"</a>"+ ": " + value+" time(s)<br>" );
+          $("#tag-count").append( "<a class='source-text-link' name="+key+">"+key +"</a>"+ ": " + value+" time(s)<br>" );
         });
+    
     }
+
 
     function displaySourceText(data){
         $("#source-text-header").show();
@@ -111,26 +115,15 @@ $(function() {
             "source": $("#source").val().toLowerCase()
         };
 
-        // if the user is searching for http://textsource.herokuapp.com
-        if(url.source.indexOf("http://textsource.herokuapp.com") != -1){
-            $('#myModal').modal('show');
+        // AJAX call to check URL and proceed accordingly
+        $.get("/check-url.json", url, checkAnswer);
 
-            // enable search again    
-            $("#submit-btn").removeAttr("disabled");
-
-            // hide div with tag count and source text
-            $("#tag").hide();
-
-        }
-
-        // otherwise, AJAX to verify URL link
-        else{
-            $.get("/check-url.json", url, checkAnswer);
-        }
     }
 
     // event listener for URL submission
     $("#input-form").on("submit", checkUrl);
+
+    $("#tag-count").on("click .source-text-link", highlight);
 
     // hide warning box (even if empty, has opaque borders that show)
     $("#warning").hide();

@@ -44,8 +44,11 @@ def source_text_json():
 def check_url_json():
     """ Prepares JSON with boolean of whether or not URL is valid """
 
+    print "************route called\n"
+
     url = request.args.get("source")
 
+    print "URL PARSED***********\n" 
     return is_valid_url(url)
 
 

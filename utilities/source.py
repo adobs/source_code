@@ -1,3 +1,5 @@
+# todo.  requests library.
+
 """
 source.py
 
@@ -7,19 +9,20 @@ Helper functions.  Based on the URL in the search box, returns information
 
 # Beautiful Soup (bs4) is a Python library for pulling data out of HTML and XML files
 from bs4 import BeautifulSoup
-import urllib2
 import collections
 from classes import MyHTMLParser
+import urllib3
 
 
 def convert_url_text(url):
     """ Convert html of a URL (as a string) to a string """
 
-    # urllib2 opens a URL and reads the HTML from the URL
-    response = urllib2.urlopen(url)
-    
+    # The ProxyManager is an HTTP proxy-aware subclass of PoolManager. 
+    # (Pool Manager inherits from RequestsMethods)
+    response = urllib3.ProxyManager(url)
+
     html = response.read()
-        
+
     return html
 
 
@@ -27,7 +30,9 @@ def is_valid_url(url):
     """ Checks to see if the URL inputted is valid.  Returns boolean string """
 
     try:
-        urllib2.urlopen(url)
+        # using the ProxyManager (as opposed to just http.request('GET'), url) 
+        # allows the site to search itself
+        urllib3.ProxyManager(url)
         return "True"
 
     except:
