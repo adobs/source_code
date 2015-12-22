@@ -15,7 +15,7 @@ from selenium.webdriver.support import expected_conditions as EC
 
 
 class TestCase(unittest.TestCase):
-    """ Unit tests """
+    """ Functional tests """
 
     #################### SETUP AND TEARDOWN FOR EACH TEST ######################
 
