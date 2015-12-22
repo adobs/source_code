@@ -51,6 +51,13 @@ def check_url_json():
     print "URL PARSED***********\n" 
     return is_valid_url(url)
 
+@app.route("/test")
+def test():
+    """ test page """
+
+
+    return "Hi"
+
 
 if __name__ == "__main__":
     

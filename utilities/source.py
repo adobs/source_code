@@ -11,28 +11,28 @@ Helper functions.  Based on the URL in the search box, returns information
 from bs4 import BeautifulSoup
 import collections
 from classes import MyHTMLParser
-import urllib3
+import urllib2
+import os
 
 
 def convert_url_text(url):
     """ Convert html of a URL (as a string) to a string """
 
-    # The ProxyManager is an HTTP proxy-aware subclass of PoolManager. 
-    # (Pool Manager inherits from RequestsMethods)
-    response = urllib3.ProxyManager(url)
+    # urllib2 opens a URL and reads the HTML from the URL
+    response = urllib2.urlopen(url)
 
     html = response.read()
-
+   
     return html
 
 
 def is_valid_url(url):
     """ Checks to see if the URL inputted is valid.  Returns boolean string """
+    
+    os.environ['no_proxy'] = '127.0.0.1,localhost'
 
     try:
-        # using the ProxyManager (as opposed to just http.request('GET'), url) 
-        # allows the site to search itself
-        urllib3.ProxyManager(url)
+        urllib2.urlopen(url)
         return "True"
 
     except:
@@ -49,7 +49,7 @@ def count_tags(url):
     # MYHTMLParser object is able to be fed HTML, where it can recognize tags
     parser = MyHTMLParser()
     parser.feed(html)
-   
+  
     tags = parser.start
 
     # iterate through and count tags
