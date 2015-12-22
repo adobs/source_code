@@ -1,10 +1,10 @@
-
-
 $(function() {
 
 
     function highlight(evt){
         var tag = $(evt.target).prop("name");
+
+        // unhighlight everything
         $("div#source-text").unhighlight();
 
         // highlight a beginning tag (two cases)
@@ -115,8 +115,26 @@ $(function() {
             "source": $("#source").val().toLowerCase()
         };
 
-        // AJAX call to check URL and proceed accordingly
-        $.get("/check-url.json", url, checkAnswer);
+
+        // if the user is searching for http://textsource.herokuapp.com or it is being run locally
+        // (due to networking restrictions in the host environment, unable to access HTML of own site)
+        if(url.source.indexOf("http://textsource.herokuapp.com") !== -1 || url.source.indexOf("localhost:") !== -1){
+            
+            // show grumpy cat modal 
+            $('#myModal').modal('show');
+
+            // enable search again    
+            $("#submit-btn").removeAttr("disabled");
+
+            // hide div with tag count and source text
+            $("#tag").hide();
+
+        }
+
+        // otherwise, AJAX to verify URL link
+        else{
+            $.get("/check-url.json", url, checkAnswer);
+        }
 
     }
 
@@ -127,6 +145,5 @@ $(function() {
 
     // hide warning box (even if empty, has opaque borders that show)
     $("#warning").hide();
-    
 
 });

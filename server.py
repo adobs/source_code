@@ -44,19 +44,17 @@ def source_text_json():
 def check_url_json():
     """ Prepares JSON with boolean of whether or not URL is valid """
 
-    print "************route called\n"
-
     url = request.args.get("source")
 
-    print "URL PARSED***********\n" 
     return is_valid_url(url)
+
 
 @app.route("/test")
 def test():
     """ test page """
 
-
-    return "Hi"
+    import socket
+    return socket.gethostbyname(socket.gethostname())
 
 
 if __name__ == "__main__":

@@ -1,5 +1,3 @@
-# todo.  requests library.
-
 """
 source.py
 
@@ -12,8 +10,6 @@ from bs4 import BeautifulSoup
 import collections
 from classes import MyHTMLParser
 import urllib2
-import os
-
 
 def convert_url_text(url):
     """ Convert html of a URL (as a string) to a string """
@@ -22,15 +18,13 @@ def convert_url_text(url):
     response = urllib2.urlopen(url)
 
     html = response.read()
-   
+
     return html
 
 
 def is_valid_url(url):
     """ Checks to see if the URL inputted is valid.  Returns boolean string """
     
-    os.environ['no_proxy'] = '127.0.0.1,localhost'
-
     try:
         urllib2.urlopen(url)
         return "True"
@@ -73,7 +67,7 @@ def escape_html(text):
 
 
 def source_text(url):
-    """ Based on a URL, outputs the source text of the doument """
+    """ Based on a URL, outputs the source text of the document """
 
     html = convert_url_text(url)
 
